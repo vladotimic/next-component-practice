@@ -18,6 +18,7 @@ const Card = styled.div`
     padding: 0.1rem 0.5rem;
     font-size: 0.85rem;
     font-weight: 700;
+    ${(props) => props.padding && `padding: ${props.padding}`};
 
     & a {
       color: #fff;
@@ -37,6 +38,18 @@ const Card = styled.div`
     ${(props) => props.pb && `padding-bottom: ${props.pb}`};
     ${(props) => props.pr && `padding-right: ${props.pr}`};
     ${(props) => props.pl && `padding-left: ${props.pl}`};
+
+    .list {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+      border-bottom: solid 1px grey;
+    }
+
+    .list:last-child {
+      border-bottom: none;
+    }
   }
 `;
 

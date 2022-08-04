@@ -29,6 +29,7 @@ const fonts = {
 
 const Text = styled.p`
   color: ${(props) => (props.color ? props.color : 'var(--clr-black)')};
+  margin: 0;
   ${(props) => props.displayBlock && `display: block`};
   ${(props) => props.center && `text-align: center`};
   ${(props) => props.fontWeight && `font-weight: ${props.fontWeight}`};
