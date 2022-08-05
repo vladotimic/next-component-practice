@@ -38,8 +38,9 @@ const StyledButton = styled.button`
   border-radius: ${(props) =>
     props.rounded ? `${props.rounded.toString()}` : 'none'};
   ${(props) => props.fullWidth && 'width: 100%'};
-  padding: 0.5rem 1rem;
+  padding: ${(props) => (props.p ? props.p : '1rem')};
   font-size: 0.9rem;
+  ${(props) => props.as === 'a' && `text-decoration: none`};
   cursor: pointer;
   transition: all 0.15s ease-in-out;
 

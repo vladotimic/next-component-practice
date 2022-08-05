@@ -13,7 +13,11 @@ const Accordion = ({ children, center, padding }) => {
           {children}
         </Content>
       )}
-      <Button fullWidth onClick={() => setIsExpanded(!isExpanded)}>
+      <Button
+        p="0.5rem 1rem"
+        fullWidth
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
         {isExpanded ? 'Show less' : 'Show more'}
       </Button>
     </Container>
