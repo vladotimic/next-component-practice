@@ -1,9 +1,6 @@
 import Head from 'next/head';
-import Image from 'next/image';
 
-import { AiOutlineCheck } from 'react-icons/ai';
-
-import { Card, Link, Button, Text, Accordion } from '../components';
+import { Card } from '../components';
 
 const insuranceDeals = [
   {
