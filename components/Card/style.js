@@ -61,6 +61,17 @@ const InsuranceDeal = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  & .img-container {
+    width: 100%;
+
+    .image {
+      object-fit: contain;
+      width: 100% !important;
+      position: relative !important;
+      height: unset !important;
+    }
+  }
+
   & .specs {
     display: flex;
 

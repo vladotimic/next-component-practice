@@ -30,8 +30,19 @@ const Card = ({
           <Link href={href}>{hrefTitle}</Link>
         </div>
         <InsuranceDeal>
-          <div>
-            <Image src={imgUrl} alt={hrefTitle} width={90} height={90} />
+          <div
+            style={{
+              width: '100px',
+            }}
+          >
+            <Image
+              src={imgUrl}
+              alt={hrefTitle}
+              height="90px"
+              width="100%"
+              layout="responsive"
+              objectFit="contain"
+            />
           </div>
           <div className="specs">
             {dealSpecs.map((spec, index) => {
