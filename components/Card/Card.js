@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { AiOutlineCheck } from 'react-icons/ai';
+import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
 
 import { Container, Title, Content, InsuranceDeal, Info } from './style';
 import Accordion from '../Accordion';
@@ -93,7 +93,11 @@ const Card = ({
                 Available online
               </p>
               <p style={{ fontSize: '0.8rem' }}>
-                {availableOnline ? <AiOutlineCheck color="green" /> : ''}
+                {availableOnline ? (
+                  <AiOutlineCheck color="green" />
+                ) : (
+                  <AiOutlineClose color="red" />
+                )}
               </p>
             </div>
             <div className="list">
@@ -101,7 +105,11 @@ const Card = ({
                 UK resident
               </p>
               <p style={{ fontSize: '0.8rem' }}>
-                {ukResident ? <AiOutlineCheck color="green" /> : ''}
+                {ukResident ? (
+                  <AiOutlineCheck color="green" />
+                ) : (
+                  <AiOutlineClose color="red" />
+                )}
               </p>
             </div>
             <div className="list">
