@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
 
-import { Container, Title, Content, InsuranceDeal, Info } from './style';
+import { Container, Title, Content, InsuranceDeal } from './style';
 import Accordion from '../Accordion';
 import Link from '../Link';
 import Button from '../Button';
@@ -18,16 +18,6 @@ const Card = ({
   eligibility,
   ...props
 }) => {
-  const {
-    maxPetValue,
-    availableOnline,
-    ukResident,
-    maxCatAged,
-    minCatAged,
-    maxDogAged,
-    minDogAged,
-  } = eligibility;
-
   return (
     <Container title={title} {...props}>
       {title && (
@@ -40,8 +30,19 @@ const Card = ({
           <Link href={href}>{hrefTitle}</Link>
         </div>
         <InsuranceDeal>
-          <div>
-            <Image src={imgUrl} alt={hrefTitle} width={90} height={90} />
+          <div
+            style={{
+              width: '100px',
+            }}
+          >
+            <Image
+              src={imgUrl}
+              alt={hrefTitle}
+              height="90px"
+              width="100%"
+              layout="responsive"
+              objectFit="contain"
+            />
           </div>
           <div className="specs">
             {dealSpecs.map((spec, index) => {
@@ -64,7 +65,7 @@ const Card = ({
           <p>{note}</p>
         </div>
       </Content>
-      <Info>
+      <div>
         <Accordion center padding="0.75rem 0">
           <div
             style={{
@@ -82,63 +83,28 @@ const Card = ({
             >
               Eligibility
             </h5>
-            <div className="list">
-              <p style={{ fontSize: '0.8rem', fontWeight: '700' }}>
-                Maximum pet value
-              </p>
-              <p style={{ fontSize: '0.8rem' }}>{maxPetValue}</p>
-            </div>
-            <div className="list">
-              <p style={{ fontSize: '0.8rem', fontWeight: '700' }}>
-                Available online
-              </p>
-              <p style={{ fontSize: '0.8rem' }}>
-                {availableOnline ? (
-                  <AiOutlineCheck color="green" />
-                ) : (
-                  <AiOutlineClose color="red" />
-                )}
-              </p>
-            </div>
-            <div className="list">
-              <p style={{ fontSize: '0.8rem', fontWeight: '700' }}>
-                UK resident
-              </p>
-              <p style={{ fontSize: '0.8rem' }}>
-                {ukResident ? (
-                  <AiOutlineCheck color="green" />
-                ) : (
-                  <AiOutlineClose color="red" />
-                )}
-              </p>
-            </div>
-            <div className="list">
-              <p style={{ fontSize: '0.8rem', fontWeight: '700' }}>
-                Maximum cat aged when cover starts
-              </p>
-              <p style={{ fontSize: '0.8rem' }}>{maxCatAged}</p>
-            </div>
-            <div className="list">
-              <p style={{ fontSize: '0.8rem', fontWeight: '700' }}>
-                Minimum cat aged when cover starts
-              </p>
-              <p style={{ fontSize: '0.8rem' }}>{minCatAged}</p>
-            </div>
-            <div className="list">
-              <p style={{ fontSize: '0.8rem', fontWeight: '700' }}>
-                Maximum dog aged when cover starts
-              </p>
-              <p style={{ fontSize: '0.8rem' }}>{maxDogAged}</p>
-            </div>
-            <div className="list">
-              <p style={{ fontSize: '0.8rem', fontWeight: '700' }}>
-                Minimum dog aged when cover starts
-              </p>
-              <p style={{ fontSize: '0.8rem' }}>{minDogAged}</p>
-            </div>
+            {eligibility.map((item, index) => {
+              const { name, value } = item;
+              return (
+                <div key={index} className="list">
+                  <p style={{ fontSize: '0.8rem', fontWeight: '700' }}>
+                    {name}
+                  </p>
+                  <p style={{ fontSize: '0.8rem' }}>
+                    {typeof value === 'boolean' && value === true ? (
+                      <AiOutlineCheck color="green" />
+                    ) : typeof value === 'boolean' && value === false ? (
+                      <AiOutlineClose color="red" />
+                    ) : (
+                      value
+                    )}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </Accordion>
-      </Info>
+      </div>
     </Container>
   );
 };
