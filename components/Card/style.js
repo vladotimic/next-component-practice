@@ -2,27 +2,13 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: relative;
-  ${(props) => props.flex && `display: flex`};
-  ${(props) => props.flexColumn && `display: flex; flex-direction: column`};
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   border: ${(props) =>
     props.title ? 'solid 2px var(--clr-dark-blue)' : 'solid 1px #bfbfbf'};
-  ${(props) => props.borderBottom && `border-bottom: ${props.borderBottom}`};
-  ${(props) => props.background && `background: ${props.background}`};
   width: 60rem;
 
   & .content {
-    ${(props) => props.margin && `margin: ${props.margin}`};
-    ${(props) => props.mt && `margin-top: ${props.mt}`};
-    ${(props) => props.mb && `margin-bottom: ${props.mb}`};
-    ${(props) => props.mr && `margin-right: ${props.mr}`};
-    ${(props) => props.ml && `margin-left: ${props.ml}`};
-
-    ${(props) => props.padding && `padding: ${props.padding}`};
-    ${(props) => props.pt && `padding-top: ${props.pt}`};
-    ${(props) => props.pb && `padding-bottom: ${props.pb}`};
-    ${(props) => props.pr && `padding-right: ${props.pr}`};
-    ${(props) => props.pl && `padding-left: ${props.pl}`};
-
     .list {
       display: flex;
       justify-content: space-between;
@@ -104,6 +90,4 @@ const InsuranceDeal = styled.div`
   }
 `;
 
-const Info = styled.div``;
-
-export { Container, Title, Content, InsuranceDeal, Info };
+export { Container, Title, Content, InsuranceDeal };
