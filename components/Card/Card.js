@@ -17,7 +17,6 @@ import {
   DealSmallText,
   Dropdown,
   DropdownContent,
-  DropdownButtonContainer,
   DealInformation,
   DealInfoTitle,
   DealInfo,
@@ -111,7 +110,7 @@ const Card = ({
             </DealInformation>
           </DropdownContent>
         )}
-        <DropdownButtonContainer>
+        <div>
           <Button
             color="grey"
             p="0.5rem 0"
@@ -120,7 +119,7 @@ const Card = ({
           >
             {isExpanded ? 'View less' : 'View more'}
           </Button>
-        </DropdownButtonContainer>
+        </div>
       </Dropdown>
     </Container>
   );

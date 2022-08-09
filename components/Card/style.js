@@ -101,6 +101,7 @@ const DealInfoTitle = styled.h5`
 const DealInfo = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
   border-bottom: solid 1px var(--clr-grey);
@@ -111,15 +112,13 @@ const DealInfo = styled.div`
 `;
 
 const DealInfoName = styled.p`
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
 `;
 
 const DealInfoValue = styled.p`
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 `;
-
-const DropdownButtonContainer = styled.div``;
 
 export {
   Container,
@@ -141,5 +140,4 @@ export {
   DealInfo,
   DealInfoName,
   DealInfoValue,
-  DropdownButtonContainer,
 };
