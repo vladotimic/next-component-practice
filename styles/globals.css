@@ -5,7 +5,7 @@
   --clr-secondary-light: hsl(103, 87%, 55%);
   --clr-white: #f5f5f5;
   --clr-black: #0a0a0a;
-  --clr-grey: #7a7979;
+  --clr-grey: #e3e3e3;
   --clr-dark-blue: #183947;
   --bg-gradient: linear-gradient(
     120deg,
@@ -108,32 +108,4 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* CARD DEAL STYLES */
-.deal {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 1rem;
-}
-
-.link-box {
-  margin-top: 1rem;
-}
-
-.note {
-  margin-bottom: 1rem;
-}
-
-.list {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 0.7rem;
-  padding-bottom: 0.7rem;
-  border-bottom: solid 1px grey;
-}
-
-.list:last-child {
-  border-bottom: none;
 }

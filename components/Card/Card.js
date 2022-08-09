@@ -1,8 +1,29 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
 
-import { Container, Title, Content, InsuranceDeal } from './style';
-import Accordion from '../Accordion';
+import {
+  Container,
+  CardTitle,
+  CardTitleLink,
+  Content,
+  ContentContainer,
+  NoteText,
+  InsuranceDeal,
+  ImageContainer,
+  DealBenefits,
+  Deal,
+  DealBigText,
+  DealSmallText,
+  Dropdown,
+  DropdownContent,
+  DropdownButtonContainer,
+  DealInformation,
+  DealInfoTitle,
+  DealInfo,
+  DealInfoName,
+  DealInfoValue,
+} from './style';
 import Link from '../Link';
 import Button from '../Button';
 
@@ -18,23 +39,25 @@ const Card = ({
   eligibility,
   ...props
 }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <Container title={title} {...props}>
       {title && (
-        <Title title={title}>
-          {href ? <a href={href}>{title}</a> : { title }}
-        </Title>
+        <CardTitle title={title}>
+          {href ? (
+            <CardTitleLink href={href}>{title}</CardTitleLink>
+          ) : (
+            { title }
+          )}
+        </CardTitle>
       )}
       <Content>
-        <div className="linkBox">
+        <ContentContainer>
           <Link href={href}>{hrefTitle}</Link>
-        </div>
+        </ContentContainer>
         <InsuranceDeal>
-          <div
-            style={{
-              width: '100px',
-            }}
-          >
+          <ImageContainer>
             <Image
               src={imgUrl}
               alt={hrefTitle}
@@ -43,68 +66,62 @@ const Card = ({
               layout="responsive"
               objectFit="contain"
             />
-          </div>
-          <div className="specs">
+          </ImageContainer>
+          <DealBenefits>
             {dealSpecs.map((spec, index) => {
               const { small, big } = spec;
               return (
-                <div key={index} className="specBox">
-                  <span className="specBox--small">{small}</span>
-                  <span className="specBox--big">{big}</span>
-                </div>
+                <Deal key={index}>
+                  <DealSmallText>{small}</DealSmallText>
+                  <DealBigText>{big}</DealBigText>
+                </Deal>
               );
             })}
-          </div>
-          <div className="dealLink">
-            <Button as="a" href="#" color="gradient" rounded="20rem">
-              View deal
-            </Button>
-          </div>
+          </DealBenefits>
+          <Button as="a" href="#" color="gradient" rounded="20rem">
+            View deal
+          </Button>
         </InsuranceDeal>
-        <div className="noteBox">
-          <p>{note}</p>
-        </div>
+        <ContentContainer>
+          <NoteText>{note}</NoteText>
+        </ContentContainer>
       </Content>
-      <div>
-        <Accordion center padding="0.75rem 0">
-          <div
-            style={{
-              width: '600px',
-              background: 'white',
-              padding: '1rem',
-            }}
+      <Dropdown>
+        {isExpanded && (
+          <DropdownContent>
+            <DealInformation>
+              <DealInfoTitle>Eligibility</DealInfoTitle>
+              {eligibility.map((item, index) => {
+                const { name, value } = item;
+                return (
+                  <DealInfo key={index}>
+                    <DealInfoName>{name}</DealInfoName>
+                    <DealInfoValue>
+                      {typeof value === 'boolean' && value === true ? (
+                        <AiOutlineCheck color="green" />
+                      ) : typeof value === 'boolean' && value === false ? (
+                        <AiOutlineClose color="red" />
+                      ) : (
+                        value
+                      )}
+                    </DealInfoValue>
+                  </DealInfo>
+                );
+              })}
+            </DealInformation>
+          </DropdownContent>
+        )}
+        <DropdownButtonContainer>
+          <Button
+            color="grey"
+            p="0.5rem 0"
+            fullWidth
+            onClick={() => setIsExpanded(!isExpanded)}
           >
-            <h5
-              style={{
-                fontSize: '1.2rem',
-                color: '#2179b0',
-                margin: 0,
-              }}
-            >
-              Eligibility
-            </h5>
-            {eligibility.map((item, index) => {
-              const { name, value } = item;
-              return (
-                <div key={index} className="list">
-                  <p style={{ fontSize: '0.8rem', fontWeight: '700' }}>
-                    {name}
-                  </p>
-                  <p style={{ fontSize: '0.8rem' }}>
-                    {typeof value === 'boolean' && value === true ? (
-                      <AiOutlineCheck color="green" />
-                    ) : typeof value === 'boolean' && value === false ? (
-                      <AiOutlineClose color="red" />
-                    ) : (
-                      value
-                    )}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </Accordion>
-      </div>
+            {isExpanded ? 'View less' : 'View more'}
+          </Button>
+        </DropdownButtonContainer>
+      </Dropdown>
     </Container>
   );
 };

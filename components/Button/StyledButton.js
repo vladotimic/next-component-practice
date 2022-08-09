@@ -13,6 +13,10 @@ const COLOR = {
     color: #fff;
     background: var(--bg-gradient);
   `,
+  grey: css`
+    color: #000;
+    background: var(--clr-grey);
+  `,
 };
 
 const HOVER = {
