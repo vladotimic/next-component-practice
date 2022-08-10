@@ -75,8 +75,6 @@ const DealBigText = styled.span`
   padding-top: 0.5rem;
 `;
 
-const Dropdown = styled.div``;
-
 const DropdownContent = styled.div`
   background: var(--clr-grey);
   display: flex;
@@ -133,7 +131,6 @@ export {
   Deal,
   DealSmallText,
   DealBigText,
-  Dropdown,
   DropdownContent,
   DealInformation,
   DealInfoTitle,

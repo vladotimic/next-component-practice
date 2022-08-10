@@ -15,7 +15,6 @@ import {
   Deal,
   DealBigText,
   DealSmallText,
-  Dropdown,
   DropdownContent,
   DealInformation,
   DealInfoTitle,
@@ -27,8 +26,6 @@ import Link from '../Link';
 import Button from '../Button';
 
 const Card = ({
-  children,
-  data,
   title,
   href,
   hrefTitle,
@@ -85,7 +82,7 @@ const Card = ({
           <NoteText>{note}</NoteText>
         </ContentContainer>
       </Content>
-      <Dropdown>
+      <div>
         {isExpanded && (
           <DropdownContent>
             <DealInformation>
@@ -120,7 +117,7 @@ const Card = ({
             {isExpanded ? 'View less' : 'View more'}
           </Button>
         </div>
-      </Dropdown>
+      </div>
     </Container>
   );
 };
